@@ -7,7 +7,11 @@
 <body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">
-
+$(function() {
+  $.getJSON("http://keita.co/lunch_with/api/test.php", function(json){
+    console.log(json);
+  });
+});
 </script>
 </body>
 </html>
