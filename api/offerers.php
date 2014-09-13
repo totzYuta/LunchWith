@@ -8,14 +8,13 @@ $stm = $dbh->query($sql_offerers);
 foreach ($stm as $row) {
   array_push($offerer_id_array, $row['offerer_id']);
 }
-
-$tmp_sql = implode(" OR id=", $offerer_id_array);
-$sql = "SELECT * FROM users WHERE id=".$tmp_sql;
-
-echo $sql."<br>";
-
-$stmt = $dbh->query($sql);
-
-echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+if ($offerer_id_array) {
+  $tmp_sql = implode(" OR id=", $offerer_id_array);
+  $sql = "SELECT * FROM users WHERE id=".$tmp_sql;
+  $stmt = $dbh->query($sql);
+  echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+} else {
+  echo "No Data";
+}
 
 $dbh = null;
