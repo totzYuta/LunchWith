@@ -8,6 +8,8 @@ try {
     exit;
 }
 
+header('Access-Control-Allow-Origin: *');
+
 // $sql = "select * from sites";
 // $stmt = $dbh->query($sql);
 
